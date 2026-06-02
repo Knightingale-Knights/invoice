@@ -1,0 +1,9 @@
+{
+  "name": "invoice-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Knightingale invoice PDF generation and Postmark sending",
+  "engines": {
+    "node": ">=18"
+  }
+}
