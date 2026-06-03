@@ -5,5 +5,8 @@
   "description": "Knightingale invoice PDF generation and Postmark sending",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "pdfmake": "0.2.12"
   }
 }
