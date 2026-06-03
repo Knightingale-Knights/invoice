@@ -117,7 +117,7 @@ function buildContent(data) {
           { text: STATIC.knightAddress, fontSize: 9, lineHeight: 1.5 } ] },
       ],
       columnGap: 24,
-      margin: [0, 0, 0, 20],
+      margin: [0, 0, 0, 40],
     },
     {
       table: {
