@@ -96,9 +96,8 @@ function buildContent(data) {
   const travelHeader = [ th("TRAVEL DATE"), th("CARER"), th("NDIS ITEM NO."), th("NDIS DESCRIPTION"), th("DISTANCE"), th("RATE"), th("SUBTOTAL") ];
 
   return [
-    { text: "TAX INVOICE", font: "GeistMedium", fontSize: 8, characterSpacing: 2, color: C.muted, margin: [0, 0, 0, 10] },
-    { text: "Knightingale", font: "Antic", fontSize: 48, color: C.ink, margin: [0, 0, 0, 6] },
-    { text: `${data.participant || ""}${data.ndis_number ? "   ·   NDIS " + data.ndis_number : ""}`, font: "GeistMedium", fontSize: 8, characterSpacing: 1, color: C.muted, margin: [0, 0, 0, 20] },
+    { text: "knightingale", font: "Antic", fontSize: 48, color: C.ink, margin: [0, 0, 0, 6] },
+    { text: `${data.participant || ""}${data.ndis_number ? "   ·   NDIS " + data.ndis_number : ""}`, font: "GeistMedium", fontSize: 8, characterSpacing: 1, color: C.ink, margin: [0, 0, 0, 20] },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 16] },
     {
       columns: [
@@ -128,8 +127,8 @@ function buildContent(data) {
         { width: "*", stack: [ label("Entity"),
             { text: STATIC.trusteeName, fontSize: 9, lineHeight: 1.5 },
             { text: "Trading as Knightingale", fontSize: 9, lineHeight: 1.5 },
-            { text: [key("ABN "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
-            { text: [key("ACN "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
+            { text: [key("ABN  "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
+            { text: [key("ACN  "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
         ] },
       ],
       columnGap: 24,
@@ -142,11 +141,11 @@ function buildContent(data) {
           { text: data.location_name || "", fontSize: 9, lineHeight: 1.5 },
           { text: data.location_address || "", fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("Payment via EFT"),
-          { text: [key("BSB "), { text: STATIC.eftBsb }], fontSize: 9, lineHeight: 1.5 },
-          { text: [key("Account "), { text: STATIC.eftAccNo }], fontSize: 9, lineHeight: 1.5 },
-          { text: [key("Name "), { text: STATIC.eftAccName }], fontSize: 9, lineHeight: 1.5 } ] },
+          { text: [key("BSB   "), { text: STATIC.eftBsb }], fontSize: 9, lineHeight: 1.5 },
+          { text: [key("Account   "), { text: STATIC.eftAccNo }], fontSize: 9, lineHeight: 1.5 },
+          { text: [key("Name   "), { text: STATIC.eftAccName }], fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("From"),
-          { text: "Knightingale", fontSize: 9, lineHeight: 1.5 },
+          { text: "knightingale", fontSize: 9, lineHeight: 1.5 },
           { text: STATIC.knightAddress, fontSize: 9, lineHeight: 1.5 } ] },
       ],
       columnGap: 24,
@@ -154,7 +153,7 @@ function buildContent(data) {
     },
 
     // SHIFT / SUPPORT TABLE
-    { text: "SUPPORT", font: "GeistMedium", fontSize: 7, characterSpacing: 1.6, color: C.muted, margin: [0, 0, 0, 8] },
+    { text: "", font: "GeistMedium", fontSize: 7, characterSpacing: 1.6, color: C.muted, margin: [0, 0, 0, 8] },
     {
       table: { headerRows: 1, widths: TABLE_WIDTHS, body: [ shiftHeader, ...shift.rows ] },
       layout: tableLayout,
@@ -172,7 +171,7 @@ function buildContent(data) {
     },
 
     // TRAVEL TABLE
-    { text: "TRAVEL", font: "GeistMedium", fontSize: 7, characterSpacing: 1.6, color: C.muted, margin: [0, 0, 0, 8] },
+    { text: "", font: "GeistMedium", fontSize: 7, characterSpacing: 1.6, color: C.muted, margin: [0, 0, 0, 8] },
     {
       table: { headerRows: 1, widths: TABLE_WIDTHS, body: [ travelHeader, ...travel.rows ] },
       layout: tableLayout,
