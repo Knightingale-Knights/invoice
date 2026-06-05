@@ -56,13 +56,13 @@ function buildContent(data) {
     const sub = hours * rate;
     totalHours += hours; subtotal += sub;
     return [
-      { text: r.date, fontSize: 9 },
-      { text: r.shift, fontSize: 9 },
-      { text: r.carer, fontSize: 9 },
+      { text: r.date, fontSize: 9, alignment: "center" },
+      { text: r.shift, fontSize: 9, alignment: "center" },
+      { text: r.carer, fontSize: 9, alignment: "center" },
       { text: r.role, fontSize: 9, alignment: "center" },
-      { text: hours.toFixed(2), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
-      { text: money(rate), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
-      { text: money(sub), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
+      { text: hours.toFixed(2), fontSize: 9, alignment: "center", fontFeatures: ["tnum"] },
+      { text: money(rate), fontSize: 9, alignment: "center", fontFeatures: ["tnum"] },
+      { text: money(sub), fontSize: 9, alignment: "center", fontFeatures: ["tnum"] },
     ];
   });
   const gst = subtotal * STATIC.gstRate;
@@ -130,7 +130,7 @@ function buildContent(data) {
         headerRows: 1,
         widths: ["18%", "15%", "*", "8%", "10%", "13%", "15%"],
         body: [
-          [ th("SHIFT DATE"), th("SHIFT"), th("CARER"), th("ROLE", "center"), th("HOURS", "right"), th("RATE/HR", "right"), th("SUBTOTAL", "right") ],
+          [ th("SHIFT DATE", "center"), th("SHIFT", "center"), th("CARER", "center"), th("ROLE", "center"), th("HOURS", "center"), th("RATE/HR", "center"), th("SUBTOTAL", "center") ],
           ...rows,
         ],
       },
@@ -154,15 +154,15 @@ function buildContent(data) {
         body: [
           [
             { text: "Totals", font: "GeistMedium", fontSize: 9, colSpan: 4 }, {}, {}, {},
-            { text: totalHours.toFixed(2), font: "GeistMedium", fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
+            { text: totalHours.toFixed(2), font: "GeistMedium", fontSize: 9, alignment: "center", fontFeatures: ["tnum"] },
             { text: "" },
-            { text: money(subtotal), font: "GeistMedium", fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
+            { text: money(subtotal), font: "GeistMedium", fontSize: 9, alignment: "center", fontFeatures: ["tnum"] },
           ],
           [
             { text: "GST", fontSize: 9, color: C.muted, colSpan: 4 }, {}, {}, {},
             { text: "" },
             { text: "" },
-            { text: money(gst), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
+            { text: money(gst), fontSize: 9, alignment: "center", fontFeatures: ["tnum"] },
           ],
         ],
       },
@@ -198,7 +198,7 @@ function buildContent(data) {
         paddingLeft: () => 0,
         paddingRight: () => 0,
       },
-      margin: [0, 0, 0, 8],
+      margin: [0, 16, 0, 8],
     },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 10] },
     {
