@@ -21,6 +21,9 @@ module.exports = (req, res) => {
     const doc = createInvoiceDoc(data);
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", "inline; filename=preview.pdf");
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
     doc.pipe(res);
     doc.end();
   } catch (err) {
