@@ -77,14 +77,20 @@ function buildContent(data) {
       columns: [
         { width: "*", stack: [ label("Invoice"),
             { columns: [
-              { width: 66, stack: [key("Number"), key("Period end"), key("Date"), key("Terms"), key("Due")], lineHeight: 1.6 },
+              { width: 72, stack: [
+                { text: "Number", color: C.muted, fontSize: 9 },
+                { text: "Period end", color: C.muted, fontSize: 9 },
+                { text: "Date", color: C.muted, fontSize: 9 },
+                { text: "Terms", color: C.muted, fontSize: 9 },
+                { text: "Due", color: C.muted, fontSize: 9 },
+              ], lineHeight: 1.7 },
               { width: "*", stack: [
                 { text: data.invoice_number || "", fontSize: 9 },
                 { text: data.period_ending || "", fontSize: 9 },
                 { text: data.invoice_date || "", fontSize: 9 },
                 { text: data.payment_terms || "", fontSize: 9 },
                 { text: data.due_date || "", fontSize: 9 },
-              ], lineHeight: 1.6 },
+              ], lineHeight: 1.7 },
             ] },
         ] },
         { width: "*", stack: [ label("Enquiries"),
@@ -117,7 +123,7 @@ function buildContent(data) {
           { text: STATIC.knightAddress, fontSize: 9, lineHeight: 1.5 } ] },
       ],
       columnGap: 24,
-      margin: [0, 0, 0, 40],
+      margin: [0, 0, 0, 20],
     },
     {
       table: {
