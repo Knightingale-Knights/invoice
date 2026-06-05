@@ -84,7 +84,7 @@ function buildContent(data) {
                 { text: "Terms", color: C.muted, fontSize: 9 },
                 { text: "Due", color: C.muted, fontSize: 9 },
               ], lineHeight: 1.7 },
-              { width: "*", stack: [
+              { width: "24", stack: [
                 { text: data.invoice_number || "", fontSize: 9 },
                 { text: data.period_ending || "", fontSize: 9 },
                 { text: data.invoice_date || "", fontSize: 9 },
