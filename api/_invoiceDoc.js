@@ -70,13 +70,14 @@ function buildContent(data) {
   const th = (t, align) => ({ text: t, font: "GeistMedium", fontSize: 7, characterSpacing: 1.4, color: C.muted, alignment: align || "left" });
 
   return [
-    { text: "knightingale", font: "Antic", fontSize: 32, color: C.ink, margin: [0, 0, 0, 20] },
+    { text: "TAX INVOICE", font: "GeistMedium", fontSize: 8, characterSpacing: 2, color: C.muted, margin: [0, 0, 0, 10] },
+    { text: "Knightingale", font: "Antic", fontSize: 48, color: C.ink, margin: [0, 0, 0, 20] },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 16] },
     {
       columns: [
         { width: "*", stack: [ label("Invoice"),
             { columns: [
-              { width: 44, stack: [
+              { width: 72, stack: [
                 { text: "Number", color: C.muted, fontSize: 9 },
                 { text: "Period end", color: C.muted, fontSize: 9 },
                 { text: "Date", color: C.muted, fontSize: 9 },
@@ -100,8 +101,8 @@ function buildContent(data) {
         { width: "*", stack: [ label("Entity"),
             { text: STATIC.trusteeName, fontSize: 9, lineHeight: 1.5 },
             { text: "Trading as Knightingale", fontSize: 9, lineHeight: 1.5 },
-            { text: [key("ABN   "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
-            { text: [key("ACN   "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
+            { text: [key("ABN "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
+            { text: [key("ACN "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
         ] },
       ],
       columnGap: 24,
@@ -114,11 +115,11 @@ function buildContent(data) {
           { text: data.location_name || "", fontSize: 9, lineHeight: 1.5 },
           { text: data.location_address || "", fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("Payment via EFT"),
-          { text: [key("BSB   "), { text: STATIC.eftBsb }], fontSize: 9, lineHeight: 1.5 },
-          { text: [key("Account   "), { text: STATIC.eftAccNo }], fontSize: 9, lineHeight: 1.5 },
-          { text: [key("Name   "), { text: STATIC.eftAccName }], fontSize: 9, lineHeight: 1.5 } ] },
+          { text: [key("BSB "), { text: STATIC.eftBsb }], fontSize: 9, lineHeight: 1.5 },
+          { text: [key("Account "), { text: STATIC.eftAccNo }], fontSize: 9, lineHeight: 1.5 },
+          { text: [key("Name "), { text: STATIC.eftAccName }], fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("From"),
-          { text: "knightingale", fontSize: 9, lineHeight: 1.5 },
+          { text: "Knightingale", fontSize: 9, lineHeight: 1.5 },
           { text: STATIC.knightAddress, fontSize: 9, lineHeight: 1.5 } ] },
       ],
       columnGap: 24,
@@ -145,17 +146,58 @@ function buildContent(data) {
       margin: [0, 0, 0, 12],
     },
     {
-      columns: [
-        { width: "*", text: "" },
-        { width: 220, stack: [
-          { columns: [ { width: "*", text: "Totals", font: "GeistMedium", fontSize: 9 },
-                       { width: "auto", text: `${totalHours.toFixed(2)}     ${money(subtotal)}`, font: "GeistMedium", fontSize: 9, alignment: "right" } ], margin: [0, 0, 0, 8] },
-          { columns: [ { width: "*", text: "GST", fontSize: 9, color: C.muted },
-                       { width: "auto", text: money(gst), fontSize: 9, alignment: "right" } ], margin: [0, 0, 0, 10] },
-          { text: "TOTAL PAYABLE", font: "GeistMedium", fontSize: 7, characterSpacing: 1.6, color: C.muted, alignment: "right", margin: [0, 0, 0, 4] },
-          { text: money(totalPayable), font: "Antic", fontSize: 32, color: C.ink, alignment: "right" },
-        ] },
-      ],
+      // Totals table — SAME column widths as the line-items table above so
+      // the hours total sits under the Hours column and dollar amounts under
+      // the Subtotal column.
+      table: {
+        widths: ["18%", "15%", "*", "8%", "10%", "13%", "15%"],
+        body: [
+          [
+            { text: "Totals", font: "GeistMedium", fontSize: 9, colSpan: 4 }, {}, {}, {},
+            { text: totalHours.toFixed(2), font: "GeistMedium", fontSize: 9, alignment: "right" },
+            { text: "" },
+            { text: money(subtotal), font: "GeistMedium", fontSize: 9, alignment: "right" },
+          ],
+          [
+            { text: "GST", fontSize: 9, color: C.muted, colSpan: 4 }, {}, {}, {},
+            { text: "" },
+            { text: "" },
+            { text: money(gst), fontSize: 9, alignment: "right" },
+          ],
+        ],
+      },
+      layout: {
+        hLineWidth: () => 0,
+        vLineWidth: () => 0,
+        paddingTop: (i) => (i === 0 ? 8 : 6),
+        paddingBottom: () => 6,
+        paddingLeft: () => 0,
+        paddingRight: () => 0,
+      },
+      margin: [0, 0, 0, 6],
+    },
+    {
+      // Total payable — large Antic figure, aligned to the Subtotal column.
+      table: {
+        widths: ["18%", "15%", "*", "8%", "10%", "13%", "15%"],
+        body: [
+          [
+            { text: "TOTAL PAYABLE", font: "GeistMedium", fontSize: 7, characterSpacing: 1.6, color: C.muted, alignment: "right", colSpan: 6 }, {}, {}, {}, {}, {},
+            { text: "" },
+          ],
+          [
+            { text: money(totalPayable), font: "Antic", fontSize: 32, color: C.ink, alignment: "right", colSpan: 7 }, {}, {}, {}, {}, {}, {},
+          ],
+        ],
+      },
+      layout: {
+        hLineWidth: () => 0,
+        vLineWidth: () => 0,
+        paddingTop: (i) => (i === 0 ? 0 : 2),
+        paddingBottom: () => 0,
+        paddingLeft: () => 0,
+        paddingRight: () => 0,
+      },
       margin: [0, 0, 0, 8],
     },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 10] },
