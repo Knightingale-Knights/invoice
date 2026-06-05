@@ -70,14 +70,13 @@ function buildContent(data) {
   const th = (t, align) => ({ text: t, font: "GeistMedium", fontSize: 7, characterSpacing: 1.4, color: C.muted, alignment: align || "left" });
 
   return [
-    { text: "TAX INVOICE", font: "GeistMedium", fontSize: 8, characterSpacing: 2, color: C.muted, margin: [0, 0, 0, 10] },
-    { text: "Knightingale", font: "Antic", fontSize: 48, color: C.ink, margin: [0, 0, 0, 20] },
+    { text: "knightingale", font: "Antic", fontSize: 48, color: C.ink, margin: [0, 0, 0, 20] },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 16] },
     {
       columns: [
         { width: "*", stack: [ label("Invoice"),
             { columns: [
-              { width: 72, stack: [
+              { width: 56, stack: [
                 { text: "Number", color: C.muted, fontSize: 9 },
                 { text: "Period end", color: C.muted, fontSize: 9 },
                 { text: "Date", color: C.muted, fontSize: 9 },
@@ -105,7 +104,7 @@ function buildContent(data) {
             { text: [key("ACN "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
         ] },
       ],
-      columnGap: 24,
+      columnGap: 8,
       margin: [0, 0, 0, 8],
     },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 12] },
