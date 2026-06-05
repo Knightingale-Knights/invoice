@@ -77,7 +77,7 @@ function buildContent(data) {
       columns: [
         { width: "*", stack: [ label("Invoice"),
             { columns: [
-              { width: 72, stack: [
+              { width: 36, stack: [
                 { text: "Number", color: C.muted, fontSize: 9 },
                 { text: "Period end", color: C.muted, fontSize: 9 },
                 { text: "Date", color: C.muted, fontSize: 9 },
