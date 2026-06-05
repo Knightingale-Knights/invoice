@@ -70,7 +70,7 @@ function buildContent(data) {
   const th = (t, align) => ({ text: t, font: "GeistMedium", fontSize: 7, characterSpacing: 1.4, color: C.muted, alignment: align || "left" });
 
   return [
-    { text: "Knightingale", font: "Antic", fontSize: 40, color: C.ink, margin: [0, 0, 0, 20] },
+    { text: "knightingale", font: "Antic", fontSize: 32, color: C.ink, margin: [0, 0, 0, 20] },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 16] },
     {
       columns: [
@@ -100,8 +100,8 @@ function buildContent(data) {
         { width: "*", stack: [ label("Entity"),
             { text: STATIC.trusteeName, fontSize: 9, lineHeight: 1.5 },
             { text: "Trading as Knightingale", fontSize: 9, lineHeight: 1.5 },
-            { text: [key("ABN "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
-            { text: [key("ACN "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
+            { text: [key("ABN   "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
+            { text: [key("ACN   "), { text: STATIC.acn, fontSize: 9 }], lineHeight: 1.5 },
         ] },
       ],
       columnGap: 24,
