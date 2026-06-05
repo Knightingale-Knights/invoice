@@ -60,9 +60,9 @@ function buildContent(data) {
       { text: r.shift, fontSize: 9 },
       { text: r.carer, fontSize: 9 },
       { text: r.role, fontSize: 9, alignment: "center" },
-      { text: hours.toFixed(2), fontSize: 9, alignment: "right" },
-      { text: money(rate), fontSize: 9, alignment: "right" },
-      { text: money(sub), fontSize: 9, alignment: "right" },
+      { text: hours.toFixed(2), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
+      { text: money(rate), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
+      { text: money(sub), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
     ];
   });
   const gst = subtotal * STATIC.gstRate;
@@ -154,15 +154,15 @@ function buildContent(data) {
         body: [
           [
             { text: "Totals", font: "GeistMedium", fontSize: 9, colSpan: 4 }, {}, {}, {},
-            { text: totalHours.toFixed(2), font: "GeistMedium", fontSize: 9, alignment: "right" },
+            { text: totalHours.toFixed(2), font: "GeistMedium", fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
             { text: "" },
-            { text: money(subtotal), font: "GeistMedium", fontSize: 9, alignment: "right" },
+            { text: money(subtotal), font: "GeistMedium", fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
           ],
           [
             { text: "GST", fontSize: 9, color: C.muted, colSpan: 4 }, {}, {}, {},
             { text: "" },
             { text: "" },
-            { text: money(gst), fontSize: 9, alignment: "right" },
+            { text: money(gst), fontSize: 9, alignment: "right", fontFeatures: ["tnum"] },
           ],
         ],
       },
