@@ -118,7 +118,7 @@ function buildContent(data) {
           { text: [key("Account "), { text: STATIC.eftAccNo }], fontSize: 9, lineHeight: 1.5 },
           { text: [key("Name "), { text: STATIC.eftAccName }], fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("From"),
-          { text: "Knightingale", fontSize: 9, lineHeight: 1.5 },
+          { text: "knightingale", fontSize: 9, lineHeight: 1.5 },
           { text: STATIC.knightAddress, fontSize: 9, lineHeight: 1.5 } ] },
       ],
       columnGap: 24,
