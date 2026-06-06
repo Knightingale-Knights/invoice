@@ -185,7 +185,7 @@ function buildContent(data) {
             { text: "" },
           ],
           [
-            { text: money(totalPayable), font: "Antic", fontSize: 32, color: C.ink, alignment: "right", colSpan: 7 }, {}, {}, {}, {}, {}, {},
+            { text: money(totalPayable), font: "Antic", fontSize: 24, color: C.ink, alignment: "right", colSpan: 7 }, {}, {}, {}, {}, {}, {},
           ],
         ],
       },
