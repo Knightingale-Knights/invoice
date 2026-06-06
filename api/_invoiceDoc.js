@@ -25,7 +25,7 @@ const printer = new PdfPrinter({
 const C = { bg: "#F7F4EF", ink: "#1A1714", muted: "#9C9488", rule: "#D8D3CB", thanks: "#C4BDB3" };
 
 const STATIC = {
-  remitPhone: "0426 512 584",
+  remitPhone: "+61 426 512 584",
   remitEmail: "care@knightingale.com.au",
   trusteeName: "The Trustee for Nebula Trust",
   abn: "50 405 424 095",
@@ -97,7 +97,7 @@ function buildContent(data) {
             { text: STATIC.remitPhone, fontSize: 9, lineHeight: 1.5 },
             { text: STATIC.remitEmail, fontSize: 9, lineHeight: 1.5 },
         ] },
-        { width: "*", stack: [ label("Entity"),
+        { width: "*", stack: [ label("Support Center"),
             { text: STATIC.trusteeName, fontSize: 9, lineHeight: 1.5 },
             { text: "Trading as Knightingale", fontSize: 9, lineHeight: 1.5 },
             { text: [key("ABN "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
@@ -110,15 +110,15 @@ function buildContent(data) {
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 12] },
     {
       columns: [
-        { width: "*", stack: [ label("Billed to"),
+        { width: "*", stack: [ label("For"),
           { text: data.location_name || "", fontSize: 9, lineHeight: 1.5 },
           { text: data.location_address || "", fontSize: 9, lineHeight: 1.5 } ] },
-        { width: "*", stack: [ label("Payment via EFT"),
+        { width: "*", stack: [ label("EFT"),
           { text: [key("BSB "), { text: STATIC.eftBsb }], fontSize: 9, lineHeight: 1.5 },
           { text: [key("Account "), { text: STATIC.eftAccNo }], fontSize: 9, lineHeight: 1.5 },
           { text: [key("Name "), { text: STATIC.eftAccName }], fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("From"),
-          { text: "Knightingale", fontSize: 9, lineHeight: 1.5 },
+          { text: "knightingale", fontSize: 9, lineHeight: 1.5 },
           { text: STATIC.knightAddress, fontSize: 9, lineHeight: 1.5 } ] },
       ],
       columnGap: 24,
@@ -197,14 +197,14 @@ function buildContent(data) {
         paddingLeft: () => 0,
         paddingRight: () => 0,
       },
-      margin: [0, 16, 0, 8],
+      margin: [0, 24, 0, 8],
     },
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 10] },
     {
       columns: [
         { width: "*", stack: [
           label("Kind care for older adults"),
-          { text: [key("Web    "), { text: "knightingale.com.au" }], fontSize: 9, lineHeight: 1.8 },
+          { text: [key("Web    "), { text: "https://knightingale.com.au" }], fontSize: 9, lineHeight: 1.8 },
           { text: [key("Email  "), { text: STATIC.remitEmail }], fontSize: 9, lineHeight: 1.8 },
           { text: [key("Phone  "), { text: STATIC.remitPhone }], fontSize: 9, lineHeight: 1.8 },
         ] },
