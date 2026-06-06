@@ -20,7 +20,7 @@ const printer = new PdfPrinter({
 
 const C = { bg: "#F7F4EF", ink: "#1A1714", muted: "#9C9488", rule: "#D8D3CB", thanks: "#C4BDB3" };
 const STATIC = {
-  remitPhone: "0426 512 584",
+  remitPhone: "+61 426 512 584",
   remitEmail: "care@knightingale.com.au",
   trusteeName: "The Trustee for Nebula Trust",
   abn: "50 405 424 095",
@@ -210,7 +210,7 @@ function buildContent(data) {
         ],
       ] },
       layout: { hLineWidth: () => 0, vLineWidth: () => 0, paddingTop: (i) => (i === 0 ? 0 : 2), paddingBottom: () => 0, paddingLeft: () => 3, paddingRight: () => 3 },
-      margin: [0, 12, 0, 8],
+      margin: [0, 28, 0, 8],
     },
 
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 10] },
