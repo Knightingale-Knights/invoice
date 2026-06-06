@@ -92,7 +92,7 @@ function buildContent(data) {
     paddingRight: () => 3,
   };
 
-  const shiftHeader = [ th("SHIFT DATE"), th("CARER"), th("NDIS ITEM NO."), th("NDIS DESCRIPTION"), th("HOURS"), th("HOURLY RATE"), th("SUBTOTAL") ];
+  const shiftHeader = [ th("SHIFT DATE"), th("CARER"), th("NDIS ITEM NO."), th("NDIS DESCRIPTION"), th("HOURS"), th("RATE/HR"), th("SUBTOTAL") ];
   const travelHeader = [ th("TRAVEL DATE"), th("CARER"), th("NDIS ITEM NO."), th("NDIS DESCRIPTION"), th("DISTANCE"), th("RATE"), th("SUBTOTAL") ];
 
   return [
@@ -124,7 +124,7 @@ function buildContent(data) {
             { text: STATIC.remitPhone, fontSize: 9, lineHeight: 1.5 },
             { text: STATIC.remitEmail, fontSize: 9, lineHeight: 1.5 },
         ] },
-        { width: "*", stack: [ label("Entity"),
+        { width: "*", stack: [ label("Support Center"),
             { text: STATIC.trusteeName, fontSize: 9, lineHeight: 1.5 },
             { text: "Trading as Knightingale", fontSize: 9, lineHeight: 1.5 },
             { text: [key("ABN  "), { text: STATIC.abn, fontSize: 9 }], lineHeight: 1.5 },
@@ -137,7 +137,7 @@ function buildContent(data) {
     { canvas: [{ type: "line", x1: 0, y1: 0, x2: RULE_W, y2: 0, lineWidth: 0.5, lineColor: C.rule }], margin: [0, 0, 0, 12] },
     {
       columns: [
-        { width: "*", stack: [ label("Billed to"),
+        { width: "*", stack: [ label("For"),
           { text: data.location_name || "", fontSize: 9, lineHeight: 1.5 },
           { text: data.location_address || "", fontSize: 9, lineHeight: 1.5 } ] },
         { width: "*", stack: [ label("Payment via EFT"),
@@ -218,7 +218,7 @@ function buildContent(data) {
       columns: [
         { width: "*", stack: [
           label("Kind care for older adults"),
-          { text: [key("Web    "), { text: "knightingale.com.au" }], fontSize: 9, lineHeight: 1.8 },
+          { text: [key("Web    "), { text: "https://knightingale.com.au" }], fontSize: 9, lineHeight: 1.8 },
           { text: [key("Email  "), { text: STATIC.remitEmail }], fontSize: 9, lineHeight: 1.8 },
           { text: [key("Phone  "), { text: STATIC.remitPhone }], fontSize: 9, lineHeight: 1.8 },
         ] },
